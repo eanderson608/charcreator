@@ -22,7 +22,7 @@ namespace Character
 
         private void OnPlayerFinishedDownload(Client player)
         {
-            string text = File.ReadAllText("character_customization.txt");
+            string text = File.ReadAllText("character_customization.json");
             API.triggerClientEvent(player, "customize_char", text);
         }
 
@@ -31,12 +31,12 @@ namespace Character
             if (eventName == "save_char")
             {
                 StreamWriter file;
-                if (!File.Exists("char.txt")) {
+                if (!File.Exists("char.json")) {
 
-                    file = new StreamWriter("char.txt");
+                    file = new StreamWriter("char.json");
                 } else {
 
-                    file = File.AppendText("char.txt");
+                    file = File.AppendText("char.json");
                 }
 
                 file.WriteLine(args[0]);
